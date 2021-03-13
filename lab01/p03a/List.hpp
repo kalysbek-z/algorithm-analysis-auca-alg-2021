@@ -55,14 +55,12 @@ public:
           mTail(new Node(T(), nullptr, nullptr)),
           mSize(0)
     {
-        mHead = other.mHead;
-        other.mHead = nullptr;
+        mHead->mNext = mTail;
+        mTail->mPrev = mHead;
 
-        mTail = other.mTail;
-        other.mTail = nullptr;
-
-        mSize = other.mSize;
-        other.mSize = 0;
+        std::swap(mHead, other.mHead);
+        std::swap(mTail, other.mTail);
+        std::swap(mSize, other.mSize);
     }
 
     ~List()
@@ -71,6 +69,37 @@ public:
 
         delete mHead;
         delete mTail;
+    }
+
+    //  assignment operator
+    List &operator=(const List &other)
+    {
+        if (this == &other)
+        {
+            return *this;
+        }
+
+        while (other.mHead->mNext != other.mTail)
+        {
+            Node *p = other.mHead->mNext;
+            insert(end(), p->mData);
+            other.mHead->mNext = p->mNext;
+        }
+        return *this;
+    }
+
+    //  move assignment operator
+    List &operator=(List &&other)
+    {
+        if (this == &other)
+        {
+            return *this;
+        }
+        std::swap(mHead, other.mHead);
+        std::swap(mTail, other.mTail);
+        std::swap(mSize, other.mSize);
+
+        return *this;
     }
 
     void clear()
@@ -128,10 +157,12 @@ public:
 
     void pushBack(const T &x)
     {
-        Node *t = new Node(x, mTail->mPrev, mTail);
-        mTail->mPrev->mNext = t;
-        mTail->mPrev = t;
-        mSize++;
+        // Node *t = new Node(x, mTail->mPrev, mTail);
+        // mTail->mPrev->mNext = t;
+        // mTail->mPrev = t;
+        // mSize++;
+
+        insert(end(), x);
     }
 
     void popBack()
@@ -289,17 +320,19 @@ public:
         return !(*this == other);
     }
 
-    // Iter &operator=(Iter &&other)
+    // Iter &operator=(const Iter &other)
     // {
-    //     if (this != &other)
+    //     if (this == &other)
+    //     {
+    //         return *this;
+    //     }
+    //     else
     //     {
     //         clear();
-
-    //         mPtr->mHead = other.mPtr->mHead;
-    //         other.mPtr->mHead = nullptr;
-
-    //         mPtr->mTail = other.mPtr->mTail;
-    //         other.mPtr->mTail = nullptr;
+    //         for (auto p = other.begin(); p != other.end(); p++)
+    //         {
+    //             pushBack(*p);
+    //         }
     //     }
     //     return *this;
     // }

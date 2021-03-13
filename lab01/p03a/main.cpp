@@ -40,7 +40,6 @@ int main()
             v.insert(p, 0);
         }
     }
-
     printInDirectOrder(v);
     printInReversedOrder(v);
 

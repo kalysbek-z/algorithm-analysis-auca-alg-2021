@@ -196,33 +196,34 @@ TEST_CASE("insert")
     REQUIRE(*p == 0);
 }
 
-// TEST_CASE("erase")
-// {
-//     List<int> v;
-//     v.pushBack(1);
-//     v.pushBack(2);
-//     v.pushBack(3);
+TEST_CASE("erase")
+{
+    List<int> v;
+    v.pushBack(1);
+    v.pushBack(2);
+    v.pushBack(3);
 
-//     auto p = v.begin();
-//     ++p;
-//     v.erase(p);
+    auto p = v.begin();
+    ++p;
 
-//     REQUIRE(v.size() == 2);
-//     REQUIRE(v.toStr() == "{1, 3}");
-//     REQUIRE(*p = 3);
+    p = v.erase(p);
 
-//     p = v.erase(p);
+    REQUIRE(v.size() == 2);
+    REQUIRE(v.toStr() == "{1, 3}");
+    REQUIRE(*p == 3);
 
-//     REQUIRE(v.size() == 1);
-//     REQUIRE(v.toStr() == "{1}");
-//     REQUIRE(p == v.end());
+    p = v.erase(p);
 
-//     --p;
-//     p = v.erase(p);
-//     REQUIRE(v.size() == 0);
-//     REQUIRE(v.toStr() == "{}");
-//     REQUIRE(p == v.end());
-// }
+    REQUIRE(v.size() == 1);
+    REQUIRE(v.toStr() == "{1}");
+    REQUIRE(p == v.end());
+
+    --p;
+    p = v.erase(p);
+    REQUIRE(v.size() == 0);
+    REQUIRE(v.toStr() == "{}");
+    REQUIRE(p == v.end());
+}
 
 TEST_CASE("copy constructor")
 {
@@ -241,36 +242,55 @@ TEST_CASE("copy constructor")
     REQUIRE(v2.toStr() == "{1, 2, 3}");
 }
 
-// TEST_CASE("move constructor")
-// {
-//     List<int> v;
+TEST_CASE("move constructor")
+{
+    List<int> v;
 
-//     v.pushBack(1);
-//     v.pushBack(2);
-//     v.pushBack(3);
+    v.pushBack(1);
+    v.pushBack(2);
+    v.pushBack(3);
 
-//     REQUIRE(v.size() == 3);
-//     REQUIRE(v.toStr() == "{1, 2, 3}");
+    REQUIRE(v.size() == 3);
+    REQUIRE(v.toStr() == "{1, 2, 3}");
 
-//     List<int> v2 = std::move(v);
+    List<int> v2 = std::move(v);
 
-//     REQUIRE(v2.size() == 3);
-//     REQUIRE(v2.toStr() == "{1, 2, 3}");
-// }
+    REQUIRE(v2.size() == 3);
+    REQUIRE(v2.toStr() == "{1, 2, 3}");
+}
 
-// TEST_CASE("= operator")
-// {
-//     List<int> v;
+TEST_CASE("assignment = operator")
+{
+    List<int> v;
+    List<int> v2;
 
-//     v.pushBack(1);
-//     v.pushBack(2);
-//     v.pushBack(3);
+    v.pushBack(1);
+    v.pushBack(2);
+    v.pushBack(3);
 
-//     REQUIRE(v.size() == 3);
-//     REQUIRE(v.toStr() == "{1, 2, 3}");
+    REQUIRE(v.size() == 3);
+    REQUIRE(v.toStr() == "{1, 2, 3}");
 
-//     List<int> v2 = v;
+    v2 = v;
 
-//     REQUIRE(v2.size() == 3);
-//     REQUIRE(v2.toStr() == "{1, 2, 3}");
-// }
+    REQUIRE(v2.size() == 3);
+    REQUIRE(v2.toStr() == "{1, 2, 3}");
+}
+
+TEST_CASE("move assignment = operator")
+{
+    List<int> v;
+    List<int> v2;
+
+    v.pushBack(1);
+    v.pushBack(2);
+    v.pushBack(3);
+
+    REQUIRE(v.size() == 3);
+    REQUIRE(v.toStr() == "{1, 2, 3}");
+
+    v2 = std::move(v);
+
+    REQUIRE(v2.size() == 3);
+    REQUIRE(v2.toStr() == "{1, 2, 3}");
+}
