@@ -6,8 +6,13 @@ int main()
 {
     int t;
     cin >> t;
+    int c = 0;
     while (t--)
     {
+        if (c > 0)
+        {
+            printf("\n");
+        }
         int bf, sg, sb;
         cin >> bf >> sg >> sb;
 
@@ -89,6 +94,6 @@ int main()
         {
             printf("green and blue died\n");
         }
-        printf("\n");
+        c++;
     }
 }
