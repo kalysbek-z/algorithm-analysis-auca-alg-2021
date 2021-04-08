@@ -33,6 +33,8 @@ int main()
             int minOfArmies = min(greenArmy.size(), blueArmy.size());
             int numOfFights = min(bf, minOfArmies);
 
+            vector<int> gg, bb;
+
             while (numOfFights--)
             {
                 auto g = --greenArmy.end();
@@ -46,12 +48,22 @@ int main()
 
                 if (gv > bv)
                 {
-                    greenArmy.insert(gv - bv);
+                    gg.push_back(gv - bv);
+                    // greenArmy.insert(gv - bv);
                 }
                 else if (bv > gv)
                 {
-                    blueArmy.insert(bv - gv);
+                    bb.push_back(bv - gv);
+                    // blueArmy.insert(bv - gv);
                 }
+            }
+            for (auto e : gg)
+            {
+                greenArmy.insert(e);
+            }
+            for (auto e : bb)
+            {
+                blueArmy.insert(e);
             }
         }
 
