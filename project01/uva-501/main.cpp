@@ -9,7 +9,7 @@ int main()
     int cc = 0;
     while (k--)
     {
-        if (c > 0)
+        if (cc > 0)
         {
             printf("\n");
         }
