@@ -6,7 +6,7 @@ int main()
 {
     int k;
     scanf("%d", &k);
-    int c = 0;
+    int cc = 0;
     while (k--)
     {
         if (c > 0)
@@ -56,6 +56,6 @@ int main()
                 iter--;
             }
         }
-        c++;
+        cc++;
     }
 }
