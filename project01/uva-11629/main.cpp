@@ -11,12 +11,13 @@ int main()
     while (p--)
     {
         string s;
-        double per;
-        cin >> s >> per;
+        int fir, sec;
+        char ch;
+        cin >> s >> fir >> ch >> sec;
 
-        elec[s] = per;
+        elec[s] = fir * 10 + sec;
     }
-
+    cin.ignore();
     string s;
     for (int i = 1; i <= g; i++)
     {
@@ -25,25 +26,26 @@ int main()
 
         int sum = 0;
         string name, sign;
-        ss >> name >> sign;
-        while (sign == "+")
+        do
         {
-            sum += elec[name];
             ss >> name >> sign;
-        }
+            sum += elec[name];
+        } while (sign == "+");
 
         int vrag;
         ss >> vrag;
-
+        vrag *= 10;
         if (sum == vrag)
         {
             if (sign.find("=") != string::npos)
             {
                 printf("Guess #%d was correct.\n", i);
+                // cout << sum << " " << vrag << "\n";
             }
             else
             {
                 printf("Guess #%d was incorrect.\n", i);
+                // cout << sum << " " << vrag << "\n";
             }
         }
         else if (sum > vrag)
@@ -51,10 +53,12 @@ int main()
             if (sign.find(">") != string::npos)
             {
                 printf("Guess #%d was correct.\n", i);
+                // cout << sum << " " << vrag << "\n";
             }
             else
             {
                 printf("Guess #%d was incorrect.\n", i);
+                // cout << sum << " " << vrag << "\n";
             }
         }
         else if (sum < vrag)
@@ -62,10 +66,12 @@ int main()
             if (sign.find("<") != string::npos)
             {
                 printf("Guess #%d was correct.\n", i);
+                // cout << sum << " " << vrag << "\n";
             }
             else
             {
                 printf("Guess #%d was incorrect.\n", i);
+                // cout << sum << " " << vrag << "\n";
             }
         }
     }
