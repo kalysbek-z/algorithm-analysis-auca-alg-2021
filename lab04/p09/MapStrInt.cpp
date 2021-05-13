@@ -57,3 +57,14 @@ void MapStrInt::printInOrder(std::ostream &out, Node *root) const
         printInOrder(out, root->mRight);
     }
 }
+
+void MapStrInt::clear(Node *root)
+{
+    if (root != nullptr)
+    {
+        clear(root->mLeft);
+        clear(root->mRight);
+        delete root;
+        mSize--;
+    }
+}

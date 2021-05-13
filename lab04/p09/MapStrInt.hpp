@@ -17,6 +17,11 @@ public:
         printInOrder(out, mRoot);
     };
 
+    void clear()
+    {
+        clear(mRoot);
+    }
+
     std::size_t size() const
     {
         return mSize;
@@ -34,6 +39,8 @@ private:
         {
         }
     };
+
+    void clear(Node *root);
 
     void printInOrder(std::ostream &out, Node *root) const;
 

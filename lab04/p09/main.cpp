@@ -17,4 +17,7 @@ int main()
 
     m.printInOrder(cout);
     cout << "size: " << m.size() << endl;
+
+    m.clear();
+    cout << m.size() << "\n";
 }
