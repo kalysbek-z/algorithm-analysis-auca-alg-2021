@@ -1,0 +1,15 @@
+9
+a b 4
+a h 8
+b h 11
+b c 8
+i c 2
+h i 7
+h g 1
+i g 6
+c d 7
+c f 4
+g f 2
+d f 14
+d e 9
+f e 10
