@@ -16,6 +16,7 @@ int main()
     while (n--)
     {
         int total = 0;
+        species.clear();
 
         while (getline(cin, s) && s != "")
         {
@@ -34,7 +35,7 @@ int main()
 
         for (auto i = species.begin(); i != species.end(); i++)
         {
-            printf("%s %.4f\n", i->first.c_str(), (double)i->second / (double)total * 100.0);
+            printf("%s %.4f\n", i->first.c_str(), i->second * 100.0 / total);
         }
     }
 }
