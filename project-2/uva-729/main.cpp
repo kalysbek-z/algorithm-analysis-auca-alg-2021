@@ -29,6 +29,9 @@ int main()
         string s = "";
 
         hammingDistance(n, h, s);
+        if (d > 0)
+        {
+            cout << "\n";
+        }
     }
-    // cout << "\n";
 }
