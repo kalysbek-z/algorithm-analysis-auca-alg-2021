@@ -20,13 +20,14 @@ int main()
     int n[5];
     while (cin >> n[0] >> n[1] >> n[2] >> n[3] >> n[4] && (n[0] != 0 && n[1] != 0 && n[2] != 0 && n[3] != 0 && n[4] != 0))
     {
+        sort(n, n + 5);
         bool p = false;
-        for (int i = 0; i < 5; i++)
+        while (next_permutation(n, n + 5))
         {
-            p = solve(n[i], 1, n);
+            p = solve(n[0], 1, n);
             if (p)
             {
-                i = 5;
+                break;
             }
         }
         if (p)
