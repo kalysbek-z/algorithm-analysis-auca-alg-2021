@@ -3,37 +3,33 @@
 using namespace std;
 
 vector<string> words;
-char passwords[256];
+string passwords[500];
 string law;
-int id;
+char nums[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
 void solve(int ind)
 {
     if (ind == law.size())
     {
-        for (int i = 0; i < law.size(); i++)
+        for (int i = 0; i < ind; i++)
         {
-            if (passwords[i] == '#')
-            {
-                cout << words[id];
-            }
-            else
-            {
-                cout << passwords[i];
-            }
+            cout << passwords[i];
         }
         cout << "\n";
     }
     else if (law[ind] == '#')
     {
-        passwords[ind] = '#';
-        solve(ind + 1);
+        for (int i = 0; i < words.size(); i++)
+        {
+            passwords[ind] = words[i];
+            solve(ind + 1);
+        }
     }
     else
     {
         for (int i = 0; i <= 9; i++)
         {
-            passwords[ind] = i + '0';
+            passwords[ind] = nums[i];
             solve(ind + 1);
         }
     }
@@ -45,10 +41,11 @@ int main()
     while (cin >> n)
     {
         string s;
+        words.resize(n);
         for (int i = 0; i < n; i++)
         {
             cin >> s;
-            words.push_back(s);
+            words[i] = s;
         }
         // for (auto &e : words)
         // {
@@ -60,11 +57,7 @@ int main()
         for (int i = 0; i < r; i++)
         {
             cin >> law;
-            for (int j = 0; j < n; j++)
-            {
-                id = j;
-                solve(0);
-            }
+            solve(0);
         }
     }
 }
