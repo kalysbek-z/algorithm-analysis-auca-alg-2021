@@ -23,15 +23,6 @@ void solve(int cur, int sum, const vector<int> &v, vector<int> &t)
         t[cur] = 1;
         solve(cur + 1, sum + v[cur], v, t);
     }
-    // if (cur == (int)v.size())
-    // {
-    //     cout << "sum: " << sum << "\n";
-    // }
-    // else
-    // {
-    //     solve(cur + 1, sum, v);
-    //     solve(cur + 1, sum + v[cur], v);
-    // }
 }
 
 int main()
