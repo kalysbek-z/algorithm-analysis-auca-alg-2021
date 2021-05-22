@@ -9,7 +9,6 @@ int r, c;
 class Solver
 {
     int mN = 8;
-    int mC;
     int counter = 0;
     vector<bool> rows;
     vector<bool> diag1;
@@ -17,7 +16,7 @@ class Solver
     vector<int> mSolution;
 
 public:
-    Solver(int pos) : mC(pos)
+    Solver()
     {
         rows.resize(8, false);
         diag1.resize(15);
@@ -113,6 +112,6 @@ int main()
         }
         cout << "SOLN       COLUMN\n";
         cout << " #      1 2 3 4 5 6 7 8\n\n";
-        Solver(0).run();
+        Solver().run();
     }
 }
