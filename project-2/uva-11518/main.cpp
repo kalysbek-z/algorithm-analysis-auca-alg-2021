@@ -36,8 +36,8 @@ int main()
         int n, m, l;
         cin >> n >> m >> l;
 
-        vector<vector<int>> graph(1000);
-        vector<Status> states(1000, Status::notVisited);
+        vector<vector<int>> graph(10001);
+        vector<Status> states(10001, Status::notVisited);
         total = 0;
 
         while (m--)
